@@ -34,7 +34,6 @@ async function getEventsToModal(id) {
 
 }
 
-
 async function createElementsFromEvents(data) { //Função que cria os todos os eventos na pagina
     const tableSelector = document.querySelector('.table'); // selcionando a tabela
     const tableBodySelector = tableSelector.childNodes[3];
