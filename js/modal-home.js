@@ -1,6 +1,5 @@
 const modalReservarIngresso = () => {
     var modal = document.getElementById("myModal");
-
     const botaoReservar0 = document.getElementById("botao-reservar0");
     botaoReservar0.addEventListener("click", (event) => {
         event.preventDefault()
@@ -16,12 +15,9 @@ const modalReservarIngresso = () => {
         event.preventDefault()
         modal.style.display = "block";
     })
-
     var botaoFechar = document.getElementById("modal-home-fechar");
     var botaoCancelar = document.getElementById("modal-home-cancelar");
-
     const formReservarIngresso = document.querySelector("#reserva");
-
     botaoFechar.onclick = function() {
         modal.style.display = "none";
         formReservarIngresso[0].value = ""
@@ -39,5 +35,4 @@ const modalReservarIngresso = () => {
             modal.style.display = ""
         }
     }
-
 }
