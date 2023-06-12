@@ -1,5 +1,3 @@
-formatarData()
-
 const criarEstruturaTodosEventos = (
     nomeEvento,
     dataEvento,
@@ -13,19 +11,15 @@ const criarEstruturaTodosEventos = (
     const eventoArticle = document.createElement("article")
     eventoArticle.setAttribute("class", "evento card p-5 m-3")
     divEventos.appendChild(eventoArticle)
-
     const nomeEventoH2 = document.createElement("h2")
-    nomeEventoH2.innerHTML = `${nomeEvento} - ${formatarData(dataEvento)}`
+    nomeEventoH2.innerHTML = `${nomeEvento} - ${dataEvento}`
     eventoArticle.appendChild(nomeEventoH2)
-
     const atracaoEventoH4 = document.createElement("h4")
     atracaoEventoH4.innerHTML = `${atracaoEvento}`
     eventoArticle.appendChild(atracaoEventoH4)
-
     const descricaoEventoH2 = document.createElement("p")
     descricaoEventoH2.innerHTML = `${descricaoEvento}`
     eventoArticle.appendChild(descricaoEventoH2)
-
     const botaoEvento = document.createElement("a")
     botaoEvento.setAttribute("class", "btn btn-primary")
     botaoEvento.setAttribute("id", `botao-reservar${indexBotao}`)
@@ -33,9 +27,7 @@ const criarEstruturaTodosEventos = (
     botaoEvento.innerHTML = `reservar ingresso`
     eventoArticle.appendChild(botaoEvento)
 }
-
 const listarEventosFazerReservaTodas = async() => {
-
     await fetch("https://soundgarden-api.vercel.app/events")
         .then(response => response.text())
         .then((data) => JSON.parse(data))
@@ -43,12 +35,10 @@ const listarEventosFazerReservaTodas = async() => {
             listaDeEventos.sort((a, b) => {
                 return new Date(a.scheduled) - new Date(b.scheduled);
             });
-
             const eventosFuturos = listaDeEventos.filter((data) => {
                 const agora = new Date();
                 return new Date(data.scheduled) > agora
             });
-
             for (let index = 0; index < eventosFuturos.length; index++) {
                 const evento = eventosFuturos[index];
                 criarEstruturaTodosEventos(
@@ -61,19 +51,13 @@ const listarEventosFazerReservaTodas = async() => {
                 )
             }
         })
-
-
     .catch(error => console.log('error', error));
 }
-
 const abrirEfecharModal = async() => {
     await listarEventosFazerReservaTodas()
-
     var modal = document.getElementById("myModal");
-
     const novaListaEventos = document.getElementsByClassName("evento")
     const qtdDeEventos = novaListaEventos.length
-
     for (let index = 0; index < novaListaEventos.length; index++) {
         var botaoReservar = document.querySelector(`#botao-reservar${index}`)
         botaoReservar.addEventListener("click", (event) => {
@@ -86,9 +70,6 @@ const abrirEfecharModal = async() => {
     }
     var botaoFechar = document.getElementById("modal-home-fechar");
     var botaoCancelar = document.getElementById("modal-home-cancelar");
-
-
-
     botaoFechar.onclick = function() {
         modal.style.display = "none";
         formReservarIngresso[0].value = ""
@@ -106,9 +87,7 @@ const abrirEfecharModal = async() => {
             modal.style.display = ""
         }
     }
-
     const formReservarIngresso = document.querySelector("#reserva");
-
     const botaoConfirmar = document.querySelector("#myModal > div > div > div.modal-footer > button.btn.btn-primary")
     botaoConfirmar.addEventListener("click", (event) => {
         event.preventDefault();
@@ -132,9 +111,6 @@ const abrirEfecharModal = async() => {
             .catch(error => console.log('error', error));
     })
 }
-
 abrirEfecharModal()
-
 const enviarPedidoReserva = () => {
-
 }
