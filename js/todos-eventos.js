@@ -1,4 +1,4 @@
-formatarData()
+
 
 const criarEstruturaTodosEventos = (
     nomeEvento,
@@ -15,7 +15,7 @@ const criarEstruturaTodosEventos = (
     divEventos.appendChild(eventoArticle)
 
     const nomeEventoH2 = document.createElement("h2")
-    nomeEventoH2.innerHTML = `${nomeEvento} - ${formatarData(dataEvento)}`
+    nomeEventoH2.innerHTML = `${nomeEvento} - ${dataEvento}`
     eventoArticle.appendChild(nomeEventoH2)
 
     const atracaoEventoH4 = document.createElement("h4")
